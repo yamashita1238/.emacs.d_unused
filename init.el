@@ -1,3 +1,14 @@
+;; パッケージ管理機能
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+;; 日本語入力にmozcを使う
+(require 'mozc)
+(set-language-environment "UTF-8")
+(setq default-input-method "japanese-mozc")
+
 (let ((default-directory "~/.emacs.d/elisp/"))
   (setq load-path (cons default-directory load-path))
   (normal-top-level-add-subdirs-to-load-path))
@@ -12,7 +23,7 @@
 (setq scroll-step 2)   ; スクロール行数
 (setq require-final-newline t) ; 最後に一行表示
 (setq frame-title-format
-      (format "emacs@%s : %%f" (system-name))) ; フレームタイトルにファイル名を表示
+      (format "emacs : %%f" (system-name))) ; フレームタイトルにファイル名を表示
 (display-time)         ; モードラインに時間を表示
 (which-function-mode 1) ; モードラインに今いる関数名を表示
 (recentf-mode)         ; 最近使ったファイルを保存
@@ -34,30 +45,25 @@
 
 ;;font
 (set-face-attribute 'default nil
-                    :family "Ricty Discord"
-                    :height 107)
-(set-fontset-font (frame-parameter nil 'font)
-                  'japanese-jisx0208
-                  (cons "Ricty Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-                  'japanese-jisx0212
-                  (cons "Ricty Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-                  'katakana-jisx0201
-                  (cons "Ricty Discord" "iso10646-1"))
+		    :family "Ricty"
+		    :height 107)
+(set-fontset-font
+ nil 'japanese-jisx0208
+ (font-spec :family "Ricty"))
 
 ;; key bind
-(define-key global-map "\C-z" 'undo)       ;undo
-(define-key global-map "\C-ci" 'recentf-open-files)
-(define-key global-map (kbd "\C-i") 'indent-region)
+(define-key global-map "\C-z" 'undo)       ;undo by \C-z
+(define-key global-map "\C-ci" 'recentf-open-files)  ;show and open files recently used
+(define-key global-map "\C-u" 'scroll-down) ;\C-u = \M-v
+;;(define-key global-map (kbd "\C-i") 'indent-region) 
 
 ;;window
 (if window-system
     (progn
       (set-frame-parameter nil 'alpha 100) ; 透明度
-      (tool-bar-mode nil)                    ; ツールバー表示
+      (tool-bar-mode 0)                    ; ツールバー表示
       (set-scroll-bar-mode t)              ; スクロールバー表示
-      (setq line-spacing 0.15)))           ; 行間
+      (setq line-spacing 0.05)))           ; 行間
 
 ;; For OCaml
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
@@ -76,5 +82,12 @@
 (setq prolog-program-name "/usr/bin/gprolog")
 (setq prolog-consult-string "[user].\n")
 
-;; curry (haskell-mode)
-(add-to-list 'auto-mode-alist '("\\.curry$" . haskell-mode))
+;; magit
+(require 'magit)
+
+;;git-gutter
+(global-git-gutter-mode t)
+
+;; flycheck
+(require 'flycheck)
+(add-hook 'c-mode-hook 'flycheck-mode)
