@@ -57,7 +57,7 @@
 (define-key global-map "\C-u" 'scroll-down) ;\C-u = \M-v
 (define-key global-map "\M-m" 'magit-status)
 (define-key global-map "\M-l" 'magit-log)
-;;(define-key global-map (kbd "\C-i") 'indent-region) 
+(define-key global-map "\C-co" 'comment-or-uncomment-region) ;comment region
 
 ;;window
 (if window-system
