@@ -58,6 +58,7 @@
 (define-key global-map "\M-m" 'magit-status)
 (define-key global-map "\M-l" 'magit-log)
 (define-key global-map "\C-co" 'comment-or-uncomment-region) ;comment region
+(define-key global-map "\C-x\C-x" 'shell) ;open shell
 
 ;;window
 (if window-system
