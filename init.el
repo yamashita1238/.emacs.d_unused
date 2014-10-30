@@ -59,6 +59,8 @@
 (define-key global-map "\M-l" 'magit-log)
 (define-key global-map "\C-co" 'comment-or-uncomment-region) ;comment region
 (define-key global-map "\C-x\C-x" 'shell) ;open shell
+(define-key global-map [?\C-.] 'other-window) ;\C-. = \C-xo
+(define-key global-map [?\C-,] 'previous-multiframe-window) ;go back buffer
 
 ;;window
 (if window-system
