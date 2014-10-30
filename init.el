@@ -92,5 +92,5 @@
 (global-git-gutter-mode t)
 
 ;; flycheck
-(require 'flycheck)
-(add-hook 'c-mode-hook 'flycheck-mode)
+;; (require 'flycheck)
+;; (add-hook 'c-mode-hook 'flycheck-mode)
