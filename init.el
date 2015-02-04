@@ -73,15 +73,16 @@
 ;; For OCaml
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(setq tuareg-use-smie nil)
 
-;; haskell-mode
+;; For Haskell
 (load "~/.emacs.d/elisp/haskell-mode-2.8.0/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 (add-hook 'c-mode-hook '(lambda () (setq tab-width 4)))
 
-;; Prolog
+;; For Prolog
 (require 'prolog)
 (add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
 (setq prolog-program-name "/usr/bin/gprolog")
@@ -98,5 +99,5 @@
 (global-undo-tree-mode)
 
 ;; flycheck
-;; (require 'flycheck)
-;; (add-hook 'c-mode-hook 'flycheck-mode)
+(require 'flycheck)
+(add-hook 'c-mode-hook 'flycheck-mode)
