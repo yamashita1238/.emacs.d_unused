@@ -52,7 +52,7 @@
  (font-spec :family "Ricty"))
 
 ;; key bind
-(define-key global-map "\C-z" 'undo)       ;undo by \C-z
+(define-key global-map "\C-z" 'undo-tree-visualize)  ;undo-tree by \C-z
 (define-key global-map "\C-ci" 'recentf-open-files)  ;show and open files recently used
 (define-key global-map "\C-u" 'scroll-down) ;\C-u = \M-v
 (define-key global-map "\M-m" 'magit-status)
@@ -91,7 +91,11 @@
 (require 'magit)
 
 ;;git-gutter
-(global-git-gutter-mode t)
+;; (global-git-gutter-mode t)
+
+;; undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 ;; flycheck
 ;; (require 'flycheck)
