@@ -71,6 +71,11 @@
       (set-scroll-bar-mode t)              ; スクロールバー表示
       (setq line-spacing 0.01)))           ; 行間
 
+;;カーソル
+(require 'physical-line)
+(setq-default physical-line-mode t) ;;物理行単位で行移動
+
+
 ;; For OCaml
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
