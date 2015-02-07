@@ -63,7 +63,7 @@
 (define-key global-map [?\C-,] 'previous-multiframe-window) ;go back buffer
 (define-key global-map "\C-x\C-b" 'bs-show)  ;bs-show
 
-;;window
+;; window
 (if window-system
     (progn
       (set-frame-parameter nil 'alpha 100) ; 透明度
@@ -71,10 +71,8 @@
       (set-scroll-bar-mode t)              ; スクロールバー表示
       (setq line-spacing 0.01)))           ; 行間
 
-;;カーソル
-(require 'physical-line)
-(setq-default physical-line-mode t) ;;物理行単位で行移動
-
+;; cursor
+(setq global-visual-line-mode t) ; cursor move 'visually' next or previous line
 
 ;; For OCaml
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
