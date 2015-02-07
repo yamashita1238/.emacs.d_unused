@@ -61,6 +61,7 @@
 (define-key global-map "\C-x\C-x" 'shell) ;open shell
 (define-key global-map [?\C-.] 'other-window) ;\C-. = \C-xo
 (define-key global-map [?\C-,] 'previous-multiframe-window) ;go back buffer
+(define-key global-map "\C-x\C-b" 'bs-show)  ;bs-show
 
 ;;window
 (if window-system
@@ -68,7 +69,7 @@
       (set-frame-parameter nil 'alpha 100) ; 透明度
       (tool-bar-mode 0)                    ; ツールバー表示
       (set-scroll-bar-mode t)              ; スクロールバー表示
-      (setq line-spacing 0.05)))           ; 行間
+      (setq line-spacing 0.01)))           ; 行間
 
 ;; For OCaml
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
