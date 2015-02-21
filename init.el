@@ -27,6 +27,9 @@
 (display-time)         ; モードラインに時間を表示
 (which-function-mode 1) ; モードラインに今いる関数名を表示
 (recentf-mode)         ; 最近使ったファイルを保存
+(setq-default tab-width 4           ; タブ幅 = 4
+              indent-tabs-mode nil) ; タブをインデントに使わない
+
 
 ;;whitespace
 (require 'whitespace)
