@@ -17,7 +17,7 @@
 
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (show-paren-mode 0)    ; 対応する括弧の強調
-(blink-cursor-mode 0)  ; カーソルの点滅
+(blink-cursor-mode t)  ; カーソルの点滅
 (column-number-mode t) ; カーソルが何文字目にいるか表示
 (line-number-mode t)   ; カーソルが何行目にいるか表示
 (setq scroll-step 2)   ; スクロール行数
@@ -46,6 +46,8 @@
 (set-face-foreground 'whitespace-tab "LightSlateGray")
 (set-face-background 'whitespace-tab "White")
 
+
+
 ;;font
 (set-face-attribute 'default nil
 		    :family "Ricty"
@@ -69,6 +71,12 @@
 ;; window
 (if window-system
     (progn
+      (add-to-list 'default-frame-alist '(foreground-color . "navy")) ; the default color of characters
+      (add-to-list 'default-frame-alist '(background-color . "white")) ; the default color of background
+      (add-to-list 'default-frame-alist '(cursor-color . "black")) ; the default color of cursor
+      (set-face-foreground 'font-lock-string-face "DarkMagenta") ; the color of strings
+      (set-face-foreground 'font-lock-keyword-face "blue1") ; the color of keywords
+      (add-to-list 'default-frame-alist '(cursor-type . bar)) ; the form of cursor
       (set-frame-parameter nil 'alpha 100) ; 透明度
       (tool-bar-mode 0)                    ; ツールバー表示
       (set-scroll-bar-mode t)              ; スクロールバー表示
@@ -97,6 +105,8 @@
 
 ;; magit
 (require 'magit)
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;git-gutter
 ;; (global-git-gutter-mode t)
