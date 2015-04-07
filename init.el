@@ -107,4 +107,4 @@
 
 ;; flycheck
 (require 'flycheck)
-(add-hook 'c-mode-hook 'flycheck-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
