@@ -4,6 +4,11 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;;; サーバ
+(require 'server)
+(unless (server-running-p) ;; 複数サーバ起動を防ぐ
+  (server-start))
+
 ;; 日本語入力にmozcを使う
 (require 'mozc)
 (set-language-environment "UTF-8")
