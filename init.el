@@ -152,6 +152,11 @@
 (setq prolog-program-name "/usr/bin/gprolog")
 (setq prolog-consult-string "[user].\n")
 
+;;;AUCTeX
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
 ;; magit
 (require 'magit)
 (setq magit-auto-revert-mode nil)
